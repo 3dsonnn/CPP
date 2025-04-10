@@ -19,7 +19,7 @@ class   Fixed
 {
     private:
         int                 value;
-        static const    int bits = 8;
+        static const    int fractionalBits = 8;
     public:
         Fixed();
         ~Fixed();

@@ -28,10 +28,27 @@ class   Fixed
         Fixed(const float param);
         Fixed(const Fixed &other);
         Fixed   &operator=(const Fixed &other);
-        float   toFloat( void ) const;
-        int     toInt( void ) const;
         int     getRawBits( void ) const;
         void    setRawBits( int const raw );
+    // Comparison Operators
+        bool    operator>(const Fixed &other) const;
+        bool    operator<(const Fixed &other) const;
+        bool    operator>=(const Fixed &other) const;
+        bool    operator<=(const Fixed &other) const;
+        bool    operator==(const Fixed &other) const;
+        bool    operator!=(const Fixed &other) const;
+    // Arithmetic Operators
+        Fixed   operator+(const Fixed &other) const;
+        Fixed   operator-(const Fixed &other) const;
+        Fixed   operator*(const Fixed &other) const;
+        Fixed   operator/(const Fixed &other) const;
+    // (In/De)crement Operators
+        // Fixed   &operator+(const Fixed &other);
+        // Fixed   &operator-(const Fixed &other);
+        // Fixed   &operator*(const Fixed &other);
+        // Fixed   &operator/(const Fixed &other);
+        float   toFloat( void ) const;
+        int     toInt( void ) const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);

@@ -13,7 +13,7 @@
 NAME =	firstOCF
 
 SRC =	main.cpp	\
-		Fixed.cpp	
+	Fixed.cpp
 
 OBJ =	$(SRC:.cpp=.o)
 

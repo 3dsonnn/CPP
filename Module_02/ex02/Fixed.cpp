@@ -52,8 +52,25 @@ float   Fixed::toFloat( void ) const { return (this->getRawBits() / 256.0f); }
 
 int     Fixed::toInt( void ) const { return (this->getRawBits() / 256); }
 
-std::ostream    &operator<<(std::ostream &out, const Fixed &fixed)
-{
-    out << fixed.toFloat();
-    return (out);
-}
+// Comparison Operators
+bool    Fixed::operator>(const Fixed &other) const { return (this->getRawBits() > other.getRawBits()); }
+
+bool    Fixed::operator<(const Fixed &other) const { return (this->getRawBits() < other.getRawBits()); }
+
+bool    Fixed::operator>=(const Fixed &other) const { return (this->getRawBits() >= other.getRawBits()); }
+
+bool    Fixed::operator<=(const Fixed &other) const { return (this->getRawBits() <= other.getRawBits()); }
+
+bool    Fixed::operator==(const Fixed &other) const { return (this->getRawBits() == other.getRawBits()); }
+
+bool    Fixed::operator!=(const Fixed &other) const { return (this->getRawBits() != other.getRawBits()); }
+
+// Arithmetic Operators
+Fixed   Fixed::operator+(const Fixed &other) const { return (Fixed(this->getRawBits() + other.getRawBits())); }
+
+Fixed   Fixed::operator-(const Fixed &other) const { return (Fixed(this->getRawBits() - other.getRawBits())); }
+
+Fixed   Fixed::operator*(const Fixed &other) const { return (Fixed(this->getRawBits() * other.getRawBits())); }
+
+Fixed   Fixed::operator/(const Fixed &other) const { return (Fixed(this->getRawBits() / other.getRawBits())); }
+
