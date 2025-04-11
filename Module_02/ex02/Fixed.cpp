@@ -52,6 +52,15 @@ float   Fixed::toFloat( void ) const { return (this->getRawBits() / 256.0f); }
 
 int     Fixed::toInt( void ) const { return (this->getRawBits() / 256); }
 
+// MIN & MAX
+Fixed   &Fixed::min(Fixed &first, Fixed &second) { return ((first < second) ? first : second); }
+
+const   Fixed   &Fixed::min(const Fixed &first, const Fixed &second) { return ((first < second) ? first : second); }
+
+Fixed   &Fixed::max(Fixed &first, Fixed &second) { return ((first > second) ? first : second); }
+
+const   Fixed   &Fixed::max(const Fixed &first, const Fixed &second) { return ((first > second) ? first : second); }
+
 // Comparison Operators
 bool    Fixed::operator>(const Fixed &other) const { return (this->getRawBits() > other.getRawBits()); }
 
@@ -66,11 +75,63 @@ bool    Fixed::operator==(const Fixed &other) const { return (this->getRawBits()
 bool    Fixed::operator!=(const Fixed &other) const { return (this->getRawBits() != other.getRawBits()); }
 
 // Arithmetic Operators
-Fixed   Fixed::operator+(const Fixed &other) const { return (Fixed(this->getRawBits() + other.getRawBits())); }
+Fixed   Fixed::operator+(const Fixed &other) const
+{
+    Fixed   tmp;
 
-Fixed   Fixed::operator-(const Fixed &other) const { return (Fixed(this->getRawBits() - other.getRawBits())); }
+    tmp.setRawBits(this->getRawBits() + other.getRawBits());
+    return (tmp);
+}
 
-Fixed   Fixed::operator*(const Fixed &other) const { return (Fixed(this->getRawBits() * other.getRawBits())); }
+Fixed   Fixed::operator-(const Fixed &other) const
+{
+    Fixed   tmp;
 
-Fixed   Fixed::operator/(const Fixed &other) const { return (Fixed(this->getRawBits() / other.getRawBits())); }
+    tmp.setRawBits(this->getRawBits() - other.getRawBits());
+    return (tmp);
+}
 
+Fixed   Fixed::operator*(const Fixed &other) const
+{
+    Fixed   tmp;
+
+    tmp.setRawBits((this->getRawBits() * other.getRawBits()) / 256);
+    return (tmp);
+}
+
+Fixed   Fixed::operator/(const Fixed &other) const
+{
+    Fixed   tmp;
+
+    tmp.setRawBits((this->getRawBits() * 256) / other.getRawBits());
+    return (tmp);
+}
+
+// (In/De)crement Operators
+Fixed   &Fixed::operator++(void)
+{
+    this->setRawBits(this->getRawBits() + 1);
+    return (*this);
+}
+
+Fixed   Fixed::operator++(int)
+{
+    Fixed   tmp(*this);
+
+    ++(*this);
+    return (tmp);
+}
+
+Fixed   &Fixed::operator--(void)
+{
+    this->setRawBits(this->getRawBits() - 1);
+    return (*this);
+}
+
+Fixed   Fixed::operator--(int)
+{
+    Fixed   tmp(*this);
+
+    --(*this);
+    return (tmp);
+}
