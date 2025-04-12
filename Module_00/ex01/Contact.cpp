@@ -3,59 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efinda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:12:28 by efinda            #+#    #+#             */
-/*   Updated: 2024/12/08 06:22:57 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/12 16:52:12 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-std::string	Contact::getstr(char ref) const
+std::string Contact::getField(char ref) const
 {
 	if (ref == 'f')
-		return (first);
+		return (fields[FIRST_NAME]);
 	if (ref == 'l')
-		return (last);
+		return (fields[LAST_NAME]);
 	if (ref == 'n')
-		return (nick);
+		return (fields[NICKNAME]);
 	if (ref == 'p')
-		return (phone);
+		return (fields[PHONE_NUMBER]);
 	if (ref == 's')
-		return (secret);
-	return (NULL);
+		return (fields[DARKEST_SECRET]);
+	return (std::string(""));
 }
 
-int	Contact::getinit(void)
+void Contact::setField(char ref, const std::string value)
 {
-	return (init());
-}
-
-int	Contact::init(void)
-{
-	std::cout << "Input the first name" << std::endl;
-	std::cin >> first;
-	if (check_name(first))
-		return (1);
-	std::cout << "Input the last name" << std::endl;
-	std::cin >> last;
-	if (check_name(last))
-		return (1);
-	std::cout << "Input the nickname" << std::endl;
-	std::cin >> nick;
-	if (check_name(nick))
-		return (1);
-	std::cout << "Input the phone number" << std::endl;
-	std::cin >> phone;
-	if (ft_strnbr(phone.c_str()))
-	{
-		std::cout << NOPHONE;
-		return (1);
-	}
-	std::cout << "Input the darkest secret" << std::endl;
-	std::cin >> secret;
-	if (check_name(secret))
-		return (1);
-	return (0);
+	if (ref == 'f')
+		fields[FIRST_NAME] = value;
+	if (ref == 'l')
+		fields[LAST_NAME] = value;
+	if (ref == 'n')
+		fields[NICKNAME] = value;
+	if (ref == 'p')
+		fields[PHONE_NUMBER] = value;
+	if (ref == 's')
+		fields[DARKEST_SECRET] = value;
 }

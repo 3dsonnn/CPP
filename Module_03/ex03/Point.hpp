@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 17:19:15 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/12 16:52:08 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/11 19:46:47 by efinda            #+#    #+#             */
+/*   Updated: 2025/04/12 09:27:47 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef POINT_HPP
+#define POINT_HPP
 
-enum e_field
-{
-	FIRST_NAME,
-	LAST_NAME,
-	NICKNAME,
-	PHONE_NUMBER,
-	DARKEST_SECRET
-};
+#include "Fixed.hpp"
 
-class Contact
+class Point
 {
 private:
-	std::string fields[5];
+    Fixed const x;
+    Fixed const y;
 
 public:
-	std::string getField(char ref) const;
-	void setField(char ref, const std::string value);
+    Point();
+    ~Point();
+    Point(const Point &other);
+    Point   &operator=(const Point &other);
+    bool    operator==(Point const &other) const;
+    Point(const float x, const float y);
+    Fixed getCrd(char c) const;
 };
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif

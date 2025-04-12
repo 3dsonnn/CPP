@@ -3,38 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efinda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:23:20 by efinda            #+#    #+#             */
-/*   Updated: 2024/12/08 15:25:02 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/12 16:52:17 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	print_truncated(const std::string str)
+void print_truncated(const std::string str)
 {
-	int	i;
-	
-	i = -1;
-	if (strlen(str.c_str()) > 10)
+	int i = -1;
+
+	if (str.size() > 10)
 	{
 		while (++i < 9)
-			std::cout << str[i];
+			std::cout << str.at(i);
 		std::cout << '.';
 	}
 	else
 		std::cout << std::setw(10) << std::right << str;
 }
 
-int	check_name(const std::string str)
+int check_name(const std::string str)
 {
-	int	i;
-	
-	i = -1;
-	while (str[++i])
+	for (int i = 0; i < (int)str.size(); i++)
 	{
-		if (!isalpha(str[i]))
+		if (!std::isalpha(str.at(i)))
 		{
 			std::cerr << NONAME;
 			return (1);
@@ -43,22 +39,31 @@ int	check_name(const std::string str)
 	return (0);
 }
 
-int	ft_strnbr(const char *str)
+int my_getline(std::string &str)
 {
-	int	i;
+	if (!std::getline(std::cin, str))
+	{
+		std::cerr << "Input aborted (EOF received)." << std::endl;
+		return (1);
+	}
+	return (0);
+}
 
-	i = 0;
+int ft_strnbr(const char *str)
+{
+	int i = 0;
+
 	if (!str || !(*str))
 		return (1);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (str[i] == '\0')
+	if (!str[i])
 		return (1);
 	while (isdigit(str[i]))
 		i++;
-	if (str[i] == '\0')
+	if (!str[i])
 		return (0);
 	return (1);
 }

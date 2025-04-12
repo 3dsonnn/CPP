@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: efinda <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 10:50:12 by efinda            #+#    #+#              #
-#    Updated: 2024/12/03 17:23:05 by efinda           ###   ########.fr        #
+#    Updated: 2025/04/12 14:50:10 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	Megaphone
+NAME =	megaphone
 
 SRC =	megaphone.cpp
 OBJ =	$(SRC:.cpp=.o)

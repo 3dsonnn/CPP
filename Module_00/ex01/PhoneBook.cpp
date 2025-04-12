@@ -3,86 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efinda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:01:29 by efinda            #+#    #+#             */
-/*   Updated: 2024/12/10 01:01:30 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/12 16:52:05 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(): counter(0), oldest(0) {}
+PhoneBook::PhoneBook() : index(0) {}
 
-void	PhoneBook::save_contact(Contact contact)
+void PhoneBook::save(Contact contact)
 {
-	if (counter < 8)
-	{
-		contacts[counter] = contact;
-		counter++;
-	}
-	else
-	{
-		contacts[oldest] = contact;
-		if (oldest == 7)
-			oldest = -1;
-		oldest++;
-	}
+	if (index == 8)
+		index = 0;
+	contacts[index] = contact;
+	index++;
 }
 
-void	PhoneBook::display_contacts(void) const
+void PhoneBook::display(void) const
 {
-	int	i;
+	int i = -1;
 
-	i = -1;
 	std::cout << std::right << std::setw(10) << "Index"
-		<< PIPE << std::setw(10) << "First Name"
-		<< PIPE << std::setw(10) << "Last Name"
-		<< PIPE << std::setw(10) << "Nickname" << std::endl;
-	while (++i < counter)
+			  << PIPE << std::setw(10) << "First Name"
+			  << PIPE << std::setw(10) << "Last Name"
+			  << PIPE << std::setw(10) << "Nickname" << std::endl;
+	while (++i < index)
 	{
 		std::cout << std::setw(10) << i << PIPE;
-		print_truncated(contacts[i].getstr('f'));
+		print_truncated(contacts[i].getField('f'));
 		std::cout << PIPE;
-		print_truncated(contacts[i].getstr('l'));
+		print_truncated(contacts[i].getField('l'));
 		std::cout << PIPE;
-		print_truncated(contacts[i].getstr('n'));
+		print_truncated(contacts[i].getField('n'));
 		std::cout << std::endl;
 	}
 }
 
-void	PhoneBook::search(void) const
+void PhoneBook::search(void) const
 {
-	std::string	str;
-	int		i;
+	std::string str;
+	int nbr;
 
-	if (counter == 0)
+	if (index == 0)
 	{
 		std::cout << "The phonebook is empty" << std::endl;
-		return ;
+		return;
 	}
-	display_contacts();
+	display();
 	std::cout << "Enter the index of the contact to be displayed" << std::endl;
-	std::getline(std::cin, str);
+	if (my_getline(str))
+		exit(1);
 	if (ft_strnbr(str.c_str()))
 	{
 		std::cerr << NOINT;
-		return ;
+		return;
 	}
-	i = atoi(str.c_str());
-	if (i < 0 && i > 7)
+	nbr = atoi(str.c_str());
+	if (nbr < 0 && nbr > 7)
 	{
 		std::cerr << OFR;
-		return ;
+		return;
 	}
-	if (i >= counter)
+	if (nbr >= index)
 	{
 		std::cerr << NAV;
-		return ;
+		return;
 	}
-	std::cout << contacts[i].getstr('f') << std::endl
-		<< contacts[i].getstr('l') << std::endl
-		<< contacts[i].getstr('n') << std::endl
-		<< contacts[i].getstr('p') << std::endl
-		<< contacts[i].getstr('s') << std::endl;
+	std::cout << contacts[nbr].getField('f') << std::endl
+			  << contacts[nbr].getField('l') << std::endl
+			  << contacts[nbr].getField('n') << std::endl
+			  << contacts[nbr].getField('p') << std::endl
+			  << contacts[nbr].getField('s') << std::endl;
 }

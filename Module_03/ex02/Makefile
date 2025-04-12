@@ -5,38 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/03 17:34:11 by efinda            #+#    #+#              #
-#    Updated: 2025/04/12 15:22:55 by efinda           ###   ########.fr        #
+#    Created: 2025/04/08 23:02:11 by efinda            #+#    #+#              #
+#    Updated: 2025/04/08 23:02:24 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	phonebook
+NAME =	ex02
 
-SRC =	main.cpp		\
-		PhoneBook.cpp	\
-		Contact.cpp		\
-		utils.cpp
-	
-COMP =	c++
-FLAGS =	-Wall -Wextra -Werror
-RM =	rm -rf
+SRC =	main.cpp	\
+		Fixed.cpp	
 
 OBJ =	$(SRC:.cpp=.o)
+
+COMP =	c++
+FLAGS =	-Wall -Wextra -Werror
+RM = rm -rf
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	@$(COMP) $(FLAGS) $(OBJ) -o $(NAME)
+	@echo "Creating executable..."
 
-%.o:	%.cpp
+%.o: %.cpp
 	@$(COMP) $(FLAGS) -c $< -o $@
+	@echo "Creating object..."
 
 clean:
 	@$(RM) $(OBJ)
+	@echo "Cleaning object..."
 
 fclean:	clean
 	@$(RM) $(NAME)
+	@echo "Cleaning executable..."
 
-re:	fclean all
+re:	fclean	all
 
 .PHONY: all clean fclean re
