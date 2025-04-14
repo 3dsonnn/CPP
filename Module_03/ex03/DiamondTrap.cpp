@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 19:09:09 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/14 19:09:15 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/14 19:21:14 by efinda            #+#    #+#             */
+/*   Updated: 2025/04/14 19:40:44 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 //  Orthodox Canonical Form - start
-ScavTrap::ScavTrap() : value(0) { std::cout << "Default constructor called" << std::endl; }
+DiamondTrap::DiamondTrap() : value(0) { std::cout << "Default constructor called" << std::endl; }
 
-ScavTrap::~ScavTrap() { std::cout << "Destructor called" << std::endl; }
+DiamondTrap::~DiamondTrap() { std::cout << "Destructor called" << std::endl; }
 
-ScavTrap::ScavTrap(const ScavTrap &other)
+DiamondTrap::DiamondTrap(const DiamondTrap &other)
 {
     std::cout << "Copy constructor called" << std::endl;
     *this = other;
 }
 
-ScavTrap   &ScavTrap::operator=(const ScavTrap &other)
+DiamondTrap   &DiamondTrap::operator=(const DiamondTrap &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
         this->setRawBits(other.getRawBits());
     return (*this);
 }
-//  Orthodox Canonical Form - end
+//  Orthodox Canonical Form - end 

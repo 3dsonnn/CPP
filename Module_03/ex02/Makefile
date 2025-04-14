@@ -6,19 +6,21 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 23:02:11 by efinda            #+#    #+#              #
-#    Updated: 2025/04/08 23:02:24 by efinda           ###   ########.fr        #
+#    Updated: 2025/04/14 19:11:08 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	ex02
+NAME =	Serena
 
-SRC =	main.cpp	\
-		Fixed.cpp	
+SRC =	main.cpp		\
+		ClapTrap.cpp	\
+		ScavTrap.cpp	\
+		FragTrap.cpp
 
 OBJ =	$(SRC:.cpp=.o)
 
 COMP =	c++
-FLAGS =	-Wall -Wextra -Werror
+FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 all:	$(NAME)

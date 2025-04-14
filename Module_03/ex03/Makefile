@@ -6,21 +6,22 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 23:02:11 by efinda            #+#    #+#              #
-#    Updated: 2025/04/11 19:48:46 by efinda           ###   ########.fr        #
+#    Updated: 2025/04/14 19:21:01 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	BSP
+NAME =	Serena
 
-SRC =	main.cpp	\
-		bsp.cpp		\
-		Fixed.cpp	\
-		Point.cpp
+SRC =	main.cpp		\
+		ClapTrap.cpp	\
+		ScavTrap.cpp	\
+		FragTrap.cpp	\
+		DiamondTrap.cpp
 
 OBJ =	$(SRC:.cpp=.o)
 
 COMP =	c++
-FLAGS =	-Wall -Wextra -Werror
+FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 all:	$(NAME)

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 10:55:47 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/12 10:56:52 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/14 19:21:36 by efinda            #+#    #+#             */
+/*   Updated: 2025/04/14 19:22:23 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 # include <iostream>
 
-class   ClapTrap
+class   DiamondTrap
 {
     private:
         
     public:
-        ClapTrap();
-        ~ClapTrap();
-        ClapTrap(const ClapTrap &other);
-        ClapTrap   &operator=(const ClapTrap &other);
+        DiamondTrap();
+        ~DiamondTrap();
+        DiamondTrap(const DiamondTrap &other);
+        DiamondTrap   &operator=(const DiamondTrap &other);
 };
 
 #endif

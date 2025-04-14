@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 10:55:47 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/12 10:56:52 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/14 19:11:19 by efinda            #+#    #+#             */
+/*   Updated: 2025/04/14 19:18:47 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include <iostream>
 
-class   ClapTrap
+class   FragTrap
 {
     private:
         
     public:
-        ClapTrap();
-        ~ClapTrap();
-        ClapTrap(const ClapTrap &other);
-        ClapTrap   &operator=(const ClapTrap &other);
+        FragTrap();
+        ~FragTrap();
+        FragTrap(const FragTrap &other);
+        FragTrap   &operator=(const FragTrap &other);
 };
 
 #endif
