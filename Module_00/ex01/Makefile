@@ -18,7 +18,7 @@ SRC =	main.cpp		\
 		utils.cpp
 	
 COMP =	c++
-FLAGS =	-Wall -Wextra -Werror
+FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM =	rm -rf
 
 OBJ =	$(SRC:.cpp=.o)

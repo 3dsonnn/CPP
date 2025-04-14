@@ -28,24 +28,18 @@ void print_truncated(const std::string str)
 
 int check_name(const std::string str)
 {
+	if (str.empty())
+		return (std::cerr << EMPTY, 1);
 	for (int i = 0; i < (int)str.size(); i++)
-	{
 		if (!std::isalpha(str.at(i)))
-		{
-			std::cerr << NONAME;
-			return (1);
-		}
-	}
+			return (std::cerr << NONAME, 1);
 	return (0);
 }
 
 int my_getline(std::string &str)
 {
 	if (!std::getline(std::cin, str))
-	{
-		std::cerr << "Input aborted (EOF received)." << std::endl;
-		return (1);
-	}
+		return (std::cerr << EOF << std::endl, 1);
 	return (0);
 }
 

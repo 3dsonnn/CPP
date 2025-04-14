@@ -46,8 +46,10 @@ static int add(Contact &contact)
 		exit(1);
 	if (ft_strnbr(tmp.c_str()))
 	{
-		std::cout << NOPHONE;
-		return (1);
+		if (tmp.empty())
+			return (std::cout << EMPTY, 1);
+		else
+			return (std::cout << NOPHONE, 1);
 	}
 	contact.setField('p', tmp);
 
@@ -67,13 +69,10 @@ int main(int ac, char **av)
 	(void)av;
 
 	if (ac != 1)
-	{
-		std::cerr << INVALID_ARGS << std::endl;
-		return (1);
-	}
+		return (std::cerr << INVALID_ARGS << std::endl, 1);
 	while (-42)
 	{
-		std::cout << "Enter one of the tree commands (ADD, SEARCH, EXIT)" << std::endl;
+		std::cout << PROMPT << std::endl;
 		if (my_getline(input))
 			return (1);
 		if (!input.compare("ADD"))
