@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 #include "Contact.hpp"
 
 #define INVALID_ARGS "Incorrect! Run the program using only ./phonebook"

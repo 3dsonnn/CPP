@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 16:58:58 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/14 11:52:36 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/14 13:52:24 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void Account::_displayTimestamp( void )
 {
     char    buffer[20];
 
-    std::time_t rawTime = std::time(nullptr);
+    std::time_t rawTime = std::time(NULL);
     std::tm *convertedTime = std::localtime(&rawTime);
     std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", convertedTime);
     std::cout << buffer;
