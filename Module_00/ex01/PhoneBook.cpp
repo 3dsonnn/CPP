@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:01:29 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/12 16:52:05 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/15 19:11:14 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void PhoneBook::display(void) const
 			  << PIPE << std::setw(10) << "First Name"
 			  << PIPE << std::setw(10) << "Last Name"
 			  << PIPE << std::setw(10) << "Nickname" << std::endl;
-	while (++i < index)
+	while (++i < 8)
 	{
+		if (contacts[i].getField('f') == "")
+			return ;
 		std::cout << std::setw(10) << i << PIPE;
 		print_truncated(contacts[i].getField('f'));
 		std::cout << PIPE;
