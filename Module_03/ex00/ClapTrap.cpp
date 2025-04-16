@@ -6,14 +6,14 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 10:57:01 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 12:44:03 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/16 10:17:40 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 //  Orthodox Canonical Form - start
-ClapTrap::ClapTrap() { std::cout << "Default constructor called" << std::endl; }
+ClapTrap::ClapTrap() : name(""), hitPoints(0), energyPoints(0), attackDamage(0) { std::cout << "Default constructor called" << std::endl; }
 
 ClapTrap::~ClapTrap() { std::cout << "Destructor called" << std::endl; }
 

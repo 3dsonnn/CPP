@@ -6,22 +6,22 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:09:09 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/16 09:52:46 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/16 11:39:58 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 //  Orthodox Canonical Form - start
-ScavTrap::ScavTrap() { /*std::cout << "ScavTrap default constructor called" << std::endl;*/ }
+ScavTrap::ScavTrap() : ClapTrap() { std::cout << "ScavTrap default constructor called" << std::endl; }
 
-ScavTrap::~ScavTrap() { /*std::cout << "ScavTrap destructor called" << std::endl;*/ }
+ScavTrap::~ScavTrap() { std::cout << "ScavTrap destructor called" << std::endl; }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) { /*std::cout << "ScavTrap copy constructor called" << std::endl;*/ }
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) { std::cout << "ScavTrap copy constructor called" << std::endl; }
 
 ScavTrap   &ScavTrap::operator=(const ScavTrap &other)
 {
-    // std::cout << "ScavTrap copy assignment operator called" << std::endl;
+    std::cout << "ScavTrap copy assignment operator called" << std::endl;
     if (this != &other)
         ClapTrap::operator=(other);
     return (*this);
@@ -30,27 +30,21 @@ ScavTrap   &ScavTrap::operator=(const ScavTrap &other)
 
 ScavTrap::ScavTrap(std::string arg) : ClapTrap(arg)
 {
-    // std::cout << "ScavTrap constructor called" << std::endl;
-    setHitPoints(100);
-    setEnergyPoints(50);
-    setAttackDamage(20);
+    std::cout << "ScavTrap constructor called" << std::endl;
+    hitPoints = 100;
+    energyPoints = 50;
+    attackDamage = 20;
 }
 
 void    ScavTrap::attack(const std::string& target)
 {
-    if (!ClapTrap::getEnergyPoints() || !ClapTrap::getHitPoints())
+    if (!energyPoints || !hitPoints)
     {
-        std::cout << "ScavTrap " << ClapTrap::getName() << " can't attack due to the lack of energy or hit points" << std::endl;
+        std::cout << "ScavTrap " << name << " can't attack due to the lack of energy or hit points" << std::endl;
         return ;
     }
-    std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing " << ClapTrap::getAttackDamage() << " points of damage!" << std::endl;
-    ClapTrap::setEnergyPoints(ClapTrap::getEnergyPoints() - 1);
+    std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+    energyPoints--;
 }
 
 void    ScavTrap::guardGate() { std::cout << "ScavTrap is now in Gate keeper mode" << std::endl; }
-
-int ScavTrap::getEnergyPoints(void) { return (50); }
-
-int ScavTrap::getAttackDamage(void) { return (20); }
-
-int ScavTrap::getHitPoints(void) { return (100); }

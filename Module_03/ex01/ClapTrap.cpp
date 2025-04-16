@@ -6,14 +6,14 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 10:57:01 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 20:05:31 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/16 11:07:31 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 //  Orthodox Canonical Form - start
-ClapTrap::ClapTrap() { std::cout << "ClapTrap default constructor called" << std::endl; }
+ClapTrap::ClapTrap() : name(""), hitPoints(0), energyPoints(0), attackDamage(0) { std::cout << "ClapTrap default constructor called" << std::endl; }
 
 ClapTrap::~ClapTrap() { std::cout << "ClapTrap destructor called" << std::endl; }
 
@@ -74,10 +74,3 @@ void    ClapTrap::beRepaired(unsigned int amount)
     this->energyPoints--;
     this->hitPoints += amount;
 }
-
-// SETTERS
-void    ClapTrap::setHitPoints(int newHitPoints) { hitPoints = newHitPoints; }
-
-void    ClapTrap::setEnergyPoints(int newEnergyPoints) { energyPoints = newEnergyPoints; }
-
-void    ClapTrap::setAttackDamage(int newAttackDamage) { attackDamage = newAttackDamage; }

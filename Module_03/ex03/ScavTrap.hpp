@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:14:46 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 21:19:40 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/16 11:39:22 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ class   ScavTrap :  virtual public ClapTrap
         ScavTrap    &operator=(const ScavTrap &other);
         void        attack(const std::string& target);
         void        guardGate();
-        int         getEnergyPoints(void);
-        int         getAttackDamage(void);
-        int         getHitPoints(void);
 };
 
 #endif

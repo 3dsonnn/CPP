@@ -6,7 +6,7 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 23:02:11 by efinda            #+#    #+#              #
-#    Updated: 2025/04/15 15:59:52 by efinda           ###   ########.fr        #
+#    Updated: 2025/04/16 11:25:10 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC =	main.cpp		\
 OBJ =	$(SRC:.cpp=.o)
 
 COMP =	c++
-FLAGS =	-Wall -Wextra -Werror -std=c++98
+FLAGS =	-Wall -Wextra -Werror
 RM = rm -rf
 
 all:	$(NAME)
