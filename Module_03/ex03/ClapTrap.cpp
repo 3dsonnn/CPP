@@ -6,26 +6,26 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 10:57:01 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 17:28:17 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/16 09:53:50 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 //  Orthodox Canonical Form - start
-ClapTrap::ClapTrap() { std::cout << "ClapTrap default constructor called" << std::endl; }
+ClapTrap::ClapTrap() { /*std::cout << "ClapTrap default constructor called" << std::endl;*/ }
 
-ClapTrap::~ClapTrap() { std::cout << "ClapTrap destructor called" << std::endl; }
+ClapTrap::~ClapTrap() { /*std::cout << "ClapTrap destructor called" << std::endl;*/ }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-    std::cout << "ClapTrap copy constructor called" << std::endl;
+    // std::cout << "ClapTrap copy constructor called" << std::endl;
     *this = other;
 }
 
 ClapTrap   &ClapTrap::operator=(const ClapTrap &other)
 {
-    std::cout << "ClapTrap copy assignment operator called" << std::endl;
+    // std::cout << "ClapTrap copy assignment operator called" << std::endl;
     if (this != &other)
     {
         this->name = other.name;
@@ -37,7 +37,7 @@ ClapTrap   &ClapTrap::operator=(const ClapTrap &other)
 }
 //  Orthodox Canonical Form - end
 
-ClapTrap::ClapTrap(std::string arg) : name(arg), hitPoints(100), energyPoints(100), attackDamage(30) { std::cout << "ClapTrap constructor called" << std::endl; }
+ClapTrap::ClapTrap(std::string arg) : name(arg), hitPoints(10), energyPoints(10), attackDamage(0) { /*std::cout << "ClapTrap constructor called" << std::endl;*/ }
 
 std::string ClapTrap::getName(void) const { return (name); }
 
@@ -76,3 +76,17 @@ void    ClapTrap::beRepaired(unsigned int amount)
     this->energyPoints--;
     this->hitPoints += amount;
 }
+
+// SETTERS
+void    ClapTrap::setHitPoints(int newHitPoints) { hitPoints = newHitPoints; }
+
+void    ClapTrap::setEnergyPoints(int newEnergyPoints) { energyPoints = newEnergyPoints; }
+
+void    ClapTrap::setAttackDamage(int newAttackDamage) { attackDamage = newAttackDamage; }
+
+// GETTERS
+int ClapTrap::getEnergyPoints(void) { return (energyPoints); }
+
+int ClapTrap::getAttackDamage(void) { return (attackDamage); }
+
+int ClapTrap::getHitPoints(void) { return (hitPoints); }

@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:11:22 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 17:12:54 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/15 20:15:42 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ FragTrap   &FragTrap::operator=(const FragTrap &other)
 }
 //  Orthodox Canonical Form - end
 
-FragTrap::FragTrap(std::string arg) : ClapTrap(arg) { std::cout << "FragTrap constructor called" << std::endl; }
+FragTrap::FragTrap(std::string arg) : ClapTrap(arg)
+{
+    std::cout << "FragTrap constructor called" << std::endl;
+    setHitPoints(100);
+    setEnergyPoints(100);
+    setAttackDamage(30);
+}
 
 void    FragTrap::highFivesGuys(void) { std::cout << "FragTrap request the highest of the fives" << std::endl; }

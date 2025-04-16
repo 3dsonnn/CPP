@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:14:46 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 13:25:02 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/15 21:19:40 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class   ScavTrap :  public ClapTrap
+class   ScavTrap :  virtual public ClapTrap
 {
     public:
         ScavTrap();
@@ -24,7 +24,11 @@ class   ScavTrap :  public ClapTrap
         ScavTrap(std::string arg);
         ScavTrap(const ScavTrap &other);
         ScavTrap    &operator=(const ScavTrap &other);
+        void        attack(const std::string& target);
         void        guardGate();
+        int         getEnergyPoints(void);
+        int         getAttackDamage(void);
+        int         getHitPoints(void);
 };
 
 #endif

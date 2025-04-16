@@ -6,11 +6,11 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 23:02:11 by efinda            #+#    #+#              #
-#    Updated: 2025/04/14 19:21:01 by efinda           ###   ########.fr        #
+#    Updated: 2025/04/15 20:50:23 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	Serena
+NAME =	weird
 
 SRC =	main.cpp		\
 		ClapTrap.cpp	\

@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 10:57:01 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 16:07:28 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/15 20:14:11 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ ClapTrap   &ClapTrap::operator=(const ClapTrap &other)
 }
 //  Orthodox Canonical Form - end
 
-ClapTrap::ClapTrap(std::string arg) : name(arg), hitPoints(100), energyPoints(100), attackDamage(30) { std::cout << "ClapTrap constructor called" << std::endl; }
+ClapTrap::ClapTrap(std::string arg) : name(arg), hitPoints(10), energyPoints(10), attackDamage(0) { std::cout << "ClapTrap constructor called" << std::endl; }
 
 void    ClapTrap::attack(const std::string& target)
 {
@@ -74,3 +74,10 @@ void    ClapTrap::beRepaired(unsigned int amount)
     this->energyPoints--;
     this->hitPoints += amount;
 }
+
+// SETTERS
+void    ClapTrap::setHitPoints(int newHitPoints) { hitPoints = newHitPoints; }
+
+void    ClapTrap::setEnergyPoints(int newEnergyPoints) { energyPoints = newEnergyPoints; }
+
+void    ClapTrap::setAttackDamage(int newAttackDamage) { attackDamage = newAttackDamage; }

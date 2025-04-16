@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:09:09 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/15 13:25:06 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/15 20:13:01 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ ScavTrap   &ScavTrap::operator=(const ScavTrap &other)
 }
 //  Orthodox Canonical Form - end
 
-ScavTrap::ScavTrap(std::string arg) : ClapTrap(arg) { std::cout << "ScavTrap constructor called" << std::endl; }
+ScavTrap::ScavTrap(std::string arg) : ClapTrap(arg)
+{
+    std::cout << "ScavTrap constructor called" << std::endl;
+    setHitPoints(100);
+    setEnergyPoints(50);
+    setAttackDamage(20);
+}
 
 void    ScavTrap::guardGate() { std::cout << "ScavTrap is now in Gate keeper mode" << std::endl; }
