@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:19:21 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/12 16:51:47 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/17 14:09:03 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define NOINT "The index you provided is wrong, it's not an integer\n"
 #define OFR "The index you provided is out of range (0 - 7)\n"
 #define NAV "The index you provided is not available\n"
-#define EOF "Input aborted (EOF received)."
+#define MY_EOF "Input aborted (EOF received)."
 #define EMPTY "A field cannot be empty\n"
 #define PIPE "|"
 

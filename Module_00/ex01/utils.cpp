@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:23:20 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/12 16:52:17 by efinda           ###   ########.fr       */
+/*   Updated: 2025/04/17 14:09:18 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int check_name(const std::string str)
 int my_getline(std::string &str)
 {
 	if (!std::getline(std::cin, str))
-		return (std::cerr << EOF << std::endl, 1);
+		return (std::cerr << MY_EOF << std::endl, 1);
 	return (0);
 }
 

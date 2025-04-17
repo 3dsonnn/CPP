@@ -5,38 +5,44 @@
 #                                                     +:+ +:+         +:+      #
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/03 17:34:11 by efinda            #+#    #+#              #
-#    Updated: 2025/04/17 14:10:22 by efinda           ###   ########.fr        #
+#    Created: 2025/04/17 12:41:54 by efinda            #+#    #+#              #
+#    Updated: 2025/04/17 15:35:07 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	phonebook
+NAME =	polymorphism
 
 SRC =	main.cpp		\
-		PhoneBook.cpp	\
-		Contact.cpp		\
-		utils.cpp
-	
-COMP =	c++
-FLAGS =	-Wall -Wextra -Werror
-RM =	rm -rf
+		Cat.cpp			\
+		Dog.cpp			\
+		Animal.cpp		\
+		WrongCat.cpp	\
+		WrongAnimal.cpp	\
 
 OBJ =	$(SRC:.cpp=.o)
+
+COMP =	c++
+FLAGS =	-Wall -Wextra -Werror
+RM = rm -rf
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	@$(COMP) $(FLAGS) $(OBJ) -o $(NAME)
+	@echo "Creating executable..."
 
-%.o:	%.cpp
+%.o: %.cpp
 	@$(COMP) $(FLAGS) -c $< -o $@
+	@echo "Creating object..."
 
 clean:
 	@$(RM) $(OBJ)
+	@echo "Cleaning object..."
 
 fclean:	clean
 	@$(RM) $(NAME)
+	@echo "Cleaning executable..."
 
-re:	fclean all
+re:	fclean	all
 
 .PHONY: all clean fclean re
