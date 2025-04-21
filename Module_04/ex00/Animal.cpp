@@ -13,7 +13,7 @@
 #include "Animal.hpp"
 
 //  Orthodox Canonical Form - start
-Animal::Animal() { std::cout << "Animal default constructor called" << std::endl; }
+Animal::Animal() : type("") { std::cout << "Animal default constructor called" << std::endl; }
 
 Animal::~Animal() { std::cout << "Animal destructor called" << std::endl; }
 
@@ -31,3 +31,7 @@ Animal   &Animal::operator=(const Animal &other)
     return (*this);
 }
 //  Orthodox Canonical Form - end
+
+std::string Animal::getType() const   { return (type); }
+
+void    Animal::makeSound() const { std::cout << "" << std::endl; }

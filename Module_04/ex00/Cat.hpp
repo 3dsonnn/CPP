@@ -15,12 +15,15 @@
 
 #include "Animal.hpp"
 
-class   Cat: Animal
+class   Cat : public Animal
 {
-    protected:
-        std::string type;
     public:
-
+        Cat();
+        ~Cat();
+        Cat(const Cat &other);
+        Cat    &operator=(const Cat &other);
+        std::string getType()   const;
+        void    makeSound() const;
 };
 
 #endif
