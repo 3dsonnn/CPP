@@ -6,18 +6,19 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 12:41:54 by efinda            #+#    #+#              #
-#    Updated: 2025/05/05 12:20:38 by efinda           ###   ########.fr        #
+#    Updated: 2025/05/05 16:00:31 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	polymorphism
+NAME =	fire
 
 SRC =	main.cpp			\
 		Cat.cpp				\
 		Dog.cpp				\
-		Animal.cpp			\
+		AAnimal.cpp			\
 		WrongCat.cpp		\
 		WrongAnimal.cpp		\
+		Brain.cpp			\
 
 OBJ =	$(SRC:.cpp=.o)
 

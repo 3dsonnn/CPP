@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 12:45:53 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 15:44:04 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/17 12:53:53 by efinda            #+#    #+#             */
+/*   Updated: 2025/05/05 15:49:59 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
 //  Orthodox Canonical Form - start
-Cat::Cat()
+WrongCat::WrongCat()
 {
-    type = "Cat";
-    std::cout << "Cat default constructor called" << std::endl;
+    std::cout << "WrongCat default constructor called" << std::endl;
+    this->type = "WrongCat";
 }
 
-Cat::~Cat() { std::cout << "Cat destructor called" << std::endl; }
+WrongCat::~WrongCat() { std::cout << "WrongCat destructor called" << std::endl; }
 
-Cat::Cat(const Cat &other) : Animal(other)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
-    std::cout << "Cat copy constructor called" << std::endl;
+    std::cout << "WrongCat copy constructor called" << std::endl;
     *this = other;
 }
 
-Cat   &Cat::operator=(const Cat &other)
+WrongCat   &WrongCat::operator=(const WrongCat &other)
 {
-    std::cout << "Cat copy assignment operator called" << std::endl;
+    std::cout << "WrongCat copy assignment operator called" << std::endl;
     if (this != &other)
         this->type = other.type;
     return (*this);
 }
 //  Orthodox Canonical Form - end
 
-void    Cat::makeSound() const   { std::cout << "Meow" << std::endl; }
+void    WrongCat::makeSound() const   { std::cout << "WrongMeow" << std::endl; }

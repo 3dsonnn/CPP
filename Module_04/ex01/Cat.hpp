@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 12:45:37 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 15:44:17 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/17 12:46:03 by efinda            #+#    #+#             */
+/*   Updated: 2025/05/05 15:46:10 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class   Dog: public Animal
+class   Cat : public Animal
 {
+    private:
+        Brain   *brain;
     public:
-        Dog();
-        ~Dog();
-        Dog(const Dog &other);
-        Dog    &operator=(const Dog &other);
+        Cat();
+        ~Cat();
+        Cat(const Cat &other);
+        Cat    &operator=(const Cat &other);
         void    makeSound() const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:46:03 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/17 12:50:50 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/05 15:44:10 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class   Cat : public Animal
         ~Cat();
         Cat(const Cat &other);
         Cat    &operator=(const Cat &other);
-        std::string getType()   const;
         void    makeSound() const;
 };
 

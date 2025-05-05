@@ -6,21 +6,23 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:54:00 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/17 12:58:39 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/05 15:44:45 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class   WrongCat
+class   WrongCat: public WrongAnimal
 {
-    protected:
-        std::string type;
     public:
-
+        WrongCat();
+        ~WrongCat();
+        WrongCat(const WrongCat &other);
+        WrongCat    &operator=(const WrongCat &other);
+        void    makeSound() const;
 };
 
 #endif

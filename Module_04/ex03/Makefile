@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/17 12:41:54 by efinda            #+#    #+#              #
-#    Updated: 2025/05/05 12:20:38 by efinda           ###   ########.fr        #
+#    Created: 2025/05/05 15:58:34 by efinda            #+#    #+#              #
+#    Updated: 2025/05/05 15:58:46 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	polymorphism
+NAME =	ideas
 
 SRC =	main.cpp			\
 		Cat.cpp				\
@@ -18,6 +18,7 @@ SRC =	main.cpp			\
 		Animal.cpp			\
 		WrongCat.cpp		\
 		WrongAnimal.cpp		\
+		Brain.cpp			\
 
 OBJ =	$(SRC:.cpp=.o)
 

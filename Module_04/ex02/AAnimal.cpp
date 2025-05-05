@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 12:45:53 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 15:44:04 by efinda           ###   ########.fr       */
+/*   Created: 2025/04/17 12:42:52 by efinda            #+#    #+#             */
+/*   Updated: 2025/05/05 16:00:26 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AAnimal.hpp"
 
 //  Orthodox Canonical Form - start
-Cat::Cat()
-{
-    type = "Cat";
-    std::cout << "Cat default constructor called" << std::endl;
-}
+AAnimal::AAnimal() { std::cout << "AAnimal default constructor called" << std::endl; }
 
-Cat::~Cat() { std::cout << "Cat destructor called" << std::endl; }
+AAnimal::~AAnimal() { std::cout << "AAnimal destructor called" << std::endl; }
 
-Cat::Cat(const Cat &other) : Animal(other)
+AAnimal::AAnimal(const AAnimal &other)
 {
-    std::cout << "Cat copy constructor called" << std::endl;
+    std::cout << "AAnimal copy constructor called" << std::endl;
     *this = other;
 }
 
-Cat   &Cat::operator=(const Cat &other)
+AAnimal   &AAnimal::operator=(const AAnimal &other)
 {
-    std::cout << "Cat copy assignment operator called" << std::endl;
-    if (this != &other)
-        this->type = other.type;
+    (void)other;
+    std::cout << "AAnimal copy assignment operator called" << std::endl;
     return (*this);
 }
 //  Orthodox Canonical Form - end
 
-void    Cat::makeSound() const   { std::cout << "Meow" << std::endl; }
+std::string AAnimal::getType() const { return (type); }

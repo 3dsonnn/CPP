@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:45:26 by efinda            #+#    #+#             */
-/*   Updated: 2025/04/17 12:45:28 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/05 15:44:24 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Dog::Dog()
 {
     std::cout << "Dog default constructor called" << std::endl;
-    this->type = "Dog";
+    type = "Dog";
 }
 
 Dog::~Dog() { std::cout << "Dog destructor called" << std::endl; }
@@ -35,7 +35,5 @@ Dog   &Dog::operator=(const Dog &other)
     return (*this);
 }
 //  Orthodox Canonical Form - end
-
-std::string Dog::getType() const   { return (this->type); }
 
 void    Dog::makeSound() const { std::cout << "Woof" << std::endl; }
