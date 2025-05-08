@@ -20,7 +20,7 @@ std::ostream    &operator<<(std::ostream &out, const Fixed &fixed)
 
 int main( void )
 {
-    std::cout << "*** SUBJECT TESTS ***" << std::endl;
+    /*std::cout << "*** SUBJECT TESTS ***" << std::endl;
     Fixed   a;
     Fixed   const   b( Fixed( 5.05f ) * Fixed( 2 ) );
     std::cout << "\t" << a << std::endl;
@@ -69,11 +69,11 @@ int main( void )
     h = Fixed( 21 ) * Fixed( 2 );
     std::cout << "\t" << "21 * 2 = " << h << std::endl;
     h = Fixed( 126 ) / Fixed( 3 );
-    std::cout << "\t" << "126 / 3 = " << h << std::endl;
+    std::cout << "\t" << "126 / 3 = " << h << std::endl;*/
 
     std::cout << std::endl << "*** (IN/DE)CREMENT OPERATORS ***" << std::endl;
     Fixed   i = Fixed( 43 );
-    std::cout << "\t" << "Fixed Point --43 = " << --i << std::endl;
+    std::cout << "\t" << "Fixed Point ++43 = " << ++i << std::endl;
     i = Fixed( 43 );
     std::cout << "\t" << "Fixed Point 43--" << std::endl;
     std::cout << i-- << std::endl;

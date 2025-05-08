@@ -6,19 +6,19 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/05 15:58:34 by efinda            #+#    #+#              #
-#    Updated: 2025/05/05 15:58:46 by efinda           ###   ########.fr        #
+#    Updated: 2025/05/08 11:34:00 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	ideas
+NAME =	recap
 
 SRC =	main.cpp			\
-		Cat.cpp				\
-		Dog.cpp				\
-		Animal.cpp			\
-		WrongCat.cpp		\
-		WrongAnimal.cpp		\
-		Brain.cpp			\
+		Ice.cpp				\
+		Cure.cpp			\
+		AMateria.cpp		\
+		Character.cpp		\
+		MateriaSource.cpp	\
+		Floor.cpp			\
 
 OBJ =	$(SRC:.cpp=.o)
 

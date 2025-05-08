@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Floor.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 16:29:55 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 16:37:06 by efinda           ###   ########.fr       */
+/*   Created: 2025/05/08 11:27:18 by efinda            #+#    #+#             */
+/*   Updated: 2025/05/08 15:58:55 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef FLOOR_HPP
+# define FLOOR_HPP
 
-class Ice
+#include <iostream>
+#include "AMateria.hpp"
+
+struct Floor
 {
-    public:
-        Ice();
-        ~Ice();
-        Ice(const Ice &other);
-        Ice &operator=(const Ice &other);
+    AMateria        *ptr;
+    Floor   *next;
+    Floor   *newNode(AMateria *addr);
+    void    addBack(Floor *&head, Floor *newNode);
+    int     sameAddr(Floor *&head, AMateria *addr);
+    void    removeNode(Floor *&head, AMateria *addr);
+    void    clean(Floor *&head);
 };
 
 #endif
