@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:43:03 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 16:00:10 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:18:36 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class   AAnimal
         virtual ~AAnimal();
         AAnimal(const AAnimal &other);
         AAnimal    &operator=(const AAnimal &other);
-        virtual std::string getType()   const;
+        std::string     getType()   const;
         virtual void    makeSound() const = 0;
 };
 

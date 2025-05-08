@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:09:52 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/08 15:58:44 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:42:54 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ Floor   *Character::floor = NULL;
 Character::Character()
 {
     flag++;
-    for (int i = 0; i < 4; i++)
-        inventory[i] = NULL;
+    init_inventory();
     std::cout << "Character default constructor called" << std::endl;
 }
 
@@ -38,9 +37,8 @@ Character::~Character()
 Character::Character(const Character &other)
 {
     flag++;
+    init_inventory();
     std::cout << "Character copy constructor called" << std::endl;
-    for (int i = 0; i < 4; i++)
-        inventory[i] = NULL;
     *this = other;
 }
 
@@ -63,11 +61,16 @@ Character   &Character::operator=(const Character &other)
 }
 //  Orthodox Canonical Form - end
 
-Character::Character(std::string name) : name(name)
+void    Character::init_inventory()
 {
     for (int i = 0; i < 4; i++)
         inventory[i] = NULL;
+}
+
+Character::Character(std::string name) : name(name)
+{
     flag++;
+    init_inventory();
 }
 
 std::string const   &Character::getName() const { return (name); }
@@ -79,12 +82,12 @@ void    Character::equip(AMateria *m)
     for (int i = 0; i < 4; i++)
         if (inventory[i] == m)
             return ;
-    if (floor->sameAddr(floor, m))
-        floor->removeNode(floor, m);
     for (int i = 0; i < 4; i++)
     {
         if (!inventory[i])
         {
+            if (floor->sameAddr(floor, m))
+                floor->removeNode(floor, m);
             inventory[i] = m;
             break ;
         }

@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:42:11 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 13:21:10 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:14:44 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,7 @@ int main()
     Animal  *animal[42];
 
     for (int i = 0; i < 42; i++)
-    {
-        if (i < 21)
-            animal[i] = new Dog();
-        else
-            animal[i] = new Cat();
-    }
+        i < 21 ? animal[i] = new Dog() : animal[i] = new Cat();
 
     for (int i = 0; i < 42; i++)
     {

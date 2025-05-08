@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:10:46 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/08 15:23:58 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:40:46 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 //  Orthodox Canonical Form - start
 MateriaSource::MateriaSource()
 {
-    for (int i = 0; i < 4; i++)
-        inventory[i] = NULL;
+    init_inventory();
     std::cout << "MateriaSource default constructor called" << std::endl;
 }
 
@@ -30,6 +29,7 @@ MateriaSource::~MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
+    init_inventory();
     std::cout << "MateriaSource copy constructor called" << std::endl;
     *this = other;
 }
@@ -52,6 +52,12 @@ MateriaSource   &MateriaSource::operator=(const MateriaSource &other)
     return (*this);
 }
 //  Orthodox Canonical Form - end
+
+void    MateriaSource::init_inventory()
+{
+    for (int i = 0; i < 4; i++)
+        inventory[i] = NULL;
+}
 
 void    MateriaSource::learnMateria(AMateria *m)
 {

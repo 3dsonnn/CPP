@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:54:19 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 12:29:21 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:00:39 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class   WrongAnimal
         virtual ~WrongAnimal();
         WrongAnimal(const WrongAnimal &other);
         WrongAnimal    &operator=(const WrongAnimal &other);
-        virtual std::string getType()   const;
-        void    makeSound() const;
+        std::string getType()   const;
+        void        makeSound() const;
 
 };
 

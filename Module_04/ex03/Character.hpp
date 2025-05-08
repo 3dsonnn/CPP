@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 10:13:26 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/08 14:05:47 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:38:06 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Character: public ICharacter
     private:
         std::string     name;
         AMateria        *inventory[4];
+        void            init_inventory();
         static  int     flag;
         static  Floor   *floor;
     public:

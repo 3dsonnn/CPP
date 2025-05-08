@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:45:26 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 15:44:24 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 16:59:44 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 //  Orthodox Canonical Form - start
 Dog::Dog()
 {
-    std::cout << "Dog default constructor called" << std::endl;
     type = "Dog";
+    std::cout << "Dog default constructor called" << std::endl;
 }
 
 Dog::~Dog() { std::cout << "Dog destructor called" << std::endl; }

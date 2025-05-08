@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:54:00 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/05 15:44:45 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/08 17:00:58 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class   WrongCat: public WrongAnimal
         ~WrongCat();
         WrongCat(const WrongCat &other);
         WrongCat    &operator=(const WrongCat &other);
-        void    makeSound() const;
+        void        makeSound() const;
 };
 
 #endif
