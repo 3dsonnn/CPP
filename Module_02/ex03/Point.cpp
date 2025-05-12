@@ -22,11 +22,6 @@ Point::Point(const Point &other) : x(other.x), y(other.y) { std::cout << "Copy c
 Point &Point::operator=(const Point &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other)
-    {
-    	Point	temp(other);
-    	*this = temp;
-    }
     return (*this);
 }
 //  Orthodox Canonical Form - end
