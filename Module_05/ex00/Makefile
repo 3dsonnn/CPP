@@ -6,7 +6,7 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 12:41:54 by efinda            #+#    #+#              #
-#    Updated: 2025/05/12 15:41:10 by efinda           ###   ########.fr        #
+#    Updated: 2025/05/19 10:40:56 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ all:	$(NAME)
 $(NAME):	$(OBJ)
 	@$(COMP) $(FLAGS) $(OBJ) -o $(NAME)
 	@echo "Creating executable..."
-	@clear
 
 %.o: %.cpp
 	@$(COMP) $(FLAGS) -c $< -o $@
@@ -35,12 +34,10 @@ $(NAME):	$(OBJ)
 clean:
 	@$(RM) $(OBJ)
 	@echo "Cleaning object..."
-	@clear
 
 fclean:	clean
 	@$(RM) $(NAME)
 	@echo "Cleaning executable..."
-	@clear
 
 re:	fclean	all
 

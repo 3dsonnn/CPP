@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:57:38 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/14 15:22:09 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/19 11:33:37 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,9 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm(target
 
 void    PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-    try
-    {
-        if (!this->getStatus())
-            throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's not signed.");
-        if (executor.getGrade() > 5)
-            throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's grade isn't high enough.");
-        std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-    }
-    catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
+    if (!this->getStatus())
+        throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's not signed.");
+    if (executor.getGrade() > 5)
+        throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's grade isn't high enough.");
+    std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

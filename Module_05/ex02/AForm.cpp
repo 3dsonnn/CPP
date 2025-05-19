@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:39:16 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/14 16:36:56 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/19 11:30:17 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExec): name(name), st
     }
 }
 
-void        AForm::beSigned(const Bureaucrat &bureaucrat)
+void    AForm::beSigned(const Bureaucrat &bureaucrat)
 {
     std::stringstream   itoa;
     std::string         message;

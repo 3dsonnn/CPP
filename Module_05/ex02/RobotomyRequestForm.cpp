@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:32:32 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/14 15:01:15 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/19 11:32:59 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,15 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm(target + "_R
 void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     static  bool    flag = true;
-    try
-    {
-        if (!this->getStatus())
-            throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's not signed.");
-        if (executor.getGrade() > 45)
-            throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's grade isn't high enough.");
-        std::cout << "BZZZZZTTT... DRRRRRRRR... VRRRRRRRRR..." << std::endl;
-        if (flag)
-            std::cout << target << " has been robotomized successfully." << std::endl;
-        else
-            std::cout << "The robotomy of " << target << " failed." << std::endl;
-        flag = !flag;
-    }
-    catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
+    
+    if (!this->getStatus())
+        throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's not signed.");
+    if (executor.getGrade() > 45)
+        throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's grade isn't high enough.");
+    std::cout << "BZZZZZTTT... DRRRRRRRR... VRRRRRRRRR..." << std::endl;
+    if (flag)
+        std::cout << target << " has been robotomized successfully." << std::endl;
+    else
+        std::cout << "The robotomy of " << target << " failed." << std::endl;
+    flag = !flag;
 }

@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:35:51 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/14 15:58:17 by efinda           ###   ########.fr       */
+/*   Updated: 2025/05/19 11:37:14 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,28 @@ void    ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     std::ofstream   file;
 
-    try
+    if (!this->getStatus())
+        throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's not signed.");
+    if (executor.getGrade() > 137)
+        throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's grade isn't high enough.");
+    std::string filename = target + "_shrubbery";
+    file.open(filename.c_str());
+    if (!file.is_open())
+        throw   std::runtime_error("Failed to open the file " + target + "_shrubbery.");
+    for (int i = 0; i < 3; i++)
     {
-        if (!this->getStatus())
-            throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's not signed.");
-        if (executor.getGrade() > 137)
-            throw   std::runtime_error("Bureaucrat " + executor.getName() + " couldn't execute the Form " + this->getName() + " because it's grade isn't high enough.");
-        std::string filename = target + "_shrubbery";
-        file.open(filename.c_str());
-        if (!file.is_open())
-            throw   std::runtime_error("Failed to open the file " + target + "_shrubbery.");
-        for (int i = 0; i < 3; i++)
-        {
-            file << "         *\n"
-                    "        ***\n"
-                    "       *****\n"
-                    "      *******\n"
-                    "     *********\n"
-                    "    ***********\n"
-                    "   *************\n"
-                    "  ***************\n"
-                    " *****************\n"
-                    "        |||\n"
-                    "        |||\n"
-                    "        |||\n\n";
-        }
-        file.close();
+        file << "         *\n"
+                "        ***\n"
+                "       *****\n"
+                "      *******\n"
+                "     *********\n"
+                "    ***********\n"
+                "   *************\n"
+                "  ***************\n"
+                " *****************\n"
+                "        |||\n"
+                "        |||\n"
+                "        |||\n\n";
     }
-    catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
-    
+    file.close();
 }
