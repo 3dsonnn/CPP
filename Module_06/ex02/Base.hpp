@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 13:22:50 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/04 16:13:35 by efinda           ###   ########.fr       */
+/*   Created: 2025/06/06 15:47:18 by efinda            #+#    #+#             */
+/*   Updated: 2025/06/06 15:49:02 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef BASE_HPP
+# define BASE_HPP
 
-int main(int ac, char **av)
+#include <iostream>
+
+class Base
 {
-    if (ac != 2)
-    {
-        std::cerr << "Error!\nInvalid number of arguments. You need to pass as parameter the literal you want to convert." << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(static_cast<std::string>(*(av + 1)));
-    return (0);
-}
+    public:
+        virtual ~Base();
+};
+
+#endif

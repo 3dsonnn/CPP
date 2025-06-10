@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 13:31:51 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/31 15:20:26 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/05 19:25:05 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define AUX_HPP
 
 # include <iostream>
+# include <sstream>
+# include <iomanip>
+# include <limits>
+# include <cmath>
 
 typedef enum e_type
 {
@@ -24,10 +28,19 @@ typedef enum e_type
     NONE
 }		t_type;
 
-void	detectType(std::string literal, t_type *type);
-// char	getChar(std::string);
-// int     getInt(std::string);
-// float	getChar(std::string);
-// double	getChar(std::string);
+void	detectType(std::string literal, t_type &type);
+void	convertChar(std::string literal);
+void	convertInt(std::string literal);
+void	convertFloat(std::string literal);
+void	convertDouble(std::string literal);
+
+void	displayResult(const std::string res);
+void	displayResult(char c);
+void	displayResult(int i);
+void	displayResult(float f);
+void	displayResult(double d);
+void	displayResult(float f, double d);
+
+int			validate_literal(std::string &literal, std::string id);
 
 #endif

@@ -5,25 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/31 13:08:40 by efinda            #+#    #+#              #
-#    Updated: 2025/06/07 15:54:19 by efinda           ###   ########.fr        #
+#    Created: 2025/06/06 15:46:43 by efinda            #+#    #+#              #
+#    Updated: 2025/06/06 17:05:14 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = identifyRealType
 
-SRC =	main.cpp				\
-		ScalarConverter.cpp		\
-		AuxDetectType.cpp		\
-		AuxDisplayResult.cpp	\
-		converters/char.cpp		\
-		converters/int.cpp		\
-		converters/float.cpp	\
-		converters/double.cpp	\
-		converters/util.cpp		\
+SRC =	main.cpp	\
+		Base.cpp	\
+		A.cpp		\
+		B.cpp		\
+		C.cpp		\
 
-HEADERS =	Aux.hpp				\
-			ScalarConverter.hpp	\
+HEADERS =	Base.hpp	\
+			A.hpp		\
+			B.hpp		\
+			C.hpp		\
 
 COMP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98

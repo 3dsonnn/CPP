@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 13:22:50 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/04 16:13:35 by efinda           ###   ########.fr       */
+/*   Created: 2025/06/05 20:35:09 by efinda            #+#    #+#             */
+/*   Updated: 2025/06/06 15:19:43 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int main(int ac, char **av)
+#include <iostream>
+#include <stdint.h>
+
+class Data;
+
+class Serializer
 {
-    if (ac != 2)
-    {
-        std::cerr << "Error!\nInvalid number of arguments. You need to pass as parameter the literal you want to convert." << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(static_cast<std::string>(*(av + 1)));
-    return (0);
-}
+    private:
+        Serializer();
+        ~Serializer();
+        Serializer(const Serializer &other);
+        Serializer &operator=(const Serializer &other);
+    public:
+        static  uintptr_t   serialize(Data* ptr);
+        static  Data        *deserialize(uintptr_t raw);
+};
+
+#endif

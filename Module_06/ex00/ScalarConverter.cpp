@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 13:16:03 by efinda            #+#    #+#             */
-/*   Updated: 2025/05/31 14:25:50 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/05 16:56:42 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,16 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) { (voi
 
 void    ScalarConverter::convert(std::string literal)
 {
-    std::cout << "char: " << std::endl;
-    std::cout << "int: " << std::endl;
-    std::cout << "float: " << std::endl;
-    std::cout << "double: " << std::endl;
+    t_type  type = NONE;
+    void    (*functions[])(std::string) = {convertChar, convertInt, convertFloat, convertDouble};
+
+    detectType(literal, type);
+    if (type == NONE)
+        displayResult(std::string("impossible"));
+    else
+    {
+        for (int i = 0; i < 4; i++)
+            if (type == i)
+                functions[i](literal);
+    }
 }

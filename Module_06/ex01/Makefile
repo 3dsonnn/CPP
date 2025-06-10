@@ -5,25 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/31 13:08:40 by efinda            #+#    #+#              #
-#    Updated: 2025/06/07 15:54:19 by efinda           ###   ########.fr        #
+#    Created: 2025/06/05 20:33:48 by efinda            #+#    #+#              #
+#    Updated: 2025/06/05 20:38:54 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = serialization
 
 SRC =	main.cpp				\
-		ScalarConverter.cpp		\
-		AuxDetectType.cpp		\
-		AuxDisplayResult.cpp	\
-		converters/char.cpp		\
-		converters/int.cpp		\
-		converters/float.cpp	\
-		converters/double.cpp	\
-		converters/util.cpp		\
+		Data.cpp				\
+		Serializer.cpp			\
 
-HEADERS =	Aux.hpp				\
-			ScalarConverter.hpp	\
+HEADERS =	Serializer.hpp		\
+			Data.hpp			\
 
 COMP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98

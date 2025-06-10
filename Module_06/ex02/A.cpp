@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 13:22:50 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/04 16:13:35 by efinda           ###   ########.fr       */
+/*   Created: 2025/06/06 16:06:32 by efinda            #+#    #+#             */
+/*   Updated: 2025/06/06 16:16:55 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "A.hpp"
 
-int main(int ac, char **av)
-{
-    if (ac != 2)
-    {
-        std::cerr << "Error!\nInvalid number of arguments. You need to pass as parameter the literal you want to convert." << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(static_cast<std::string>(*(av + 1)));
-    return (0);
-}
+A::~A() { std::cout << "A Destructor Called" << std::endl; }
