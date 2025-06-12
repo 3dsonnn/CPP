@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:22:04 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/12 11:56:00 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/12 12:50:02 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 #include <algorithm>
 
 template <typename T>
-bool    easyfind(T container, int value)
-{
-    return (std::find(container.begin(), container.end(), value) != container.end());
-}
+bool    easyfind(T container, int value) { return (std::find(container.begin(), container.end(), value) != container.end()); }
 
 #endif
