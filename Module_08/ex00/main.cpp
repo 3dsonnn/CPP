@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:21:41 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/12 12:15:55 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/12 17:47:30 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void    fillIntegerContainer(C &container)
 {
     for (unsigned int i = 0; i < amount; i++)
     {
-        long value = -2147483648 + rand() % (4294967295 + 1);
-        if (rand() % 2)
-            value *= -1;
+        long value = rand() - (RAND_MAX / 2);
         container.insert(container.end(), value);
         std::cout << value << " | ";
     }
@@ -43,9 +41,7 @@ void    randomSearch(C &container)
 {
     for (unsigned int i = 0; i < times; i++)
     {
-        long value = -2147483648 + rand() % (4294967295 + 1);
-        if (rand() % 2)
-            value *= -1;
+        long value = rand() - (RAND_MAX / 2);
         promptResult(value, easyfind(container, 2));
     }
     std::cout << std::endl << std::endl;
