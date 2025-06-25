@@ -5,31 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/23 12:06:40 by efinda            #+#    #+#              #
-#    Updated: 2025/06/24 12:46:41 by efinda           ###   ########.fr        #
+#    Created: 2025/06/23 17:54:38 by efinda            #+#    #+#              #
+#    Updated: 2025/06/24 12:46:43 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = RPN
+NAME = PmergeMe
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADER =	RPN.hpp	\
+HEADER = PmergeMe.hpp
 
-OBJ =	main.o	\
-		RPN.o	\
+OBJ =	main.o		\
+		PmergeMe.o	\
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 		$(CC) $(FLAGS) $(OBJ) -o $@
 
-main.o : main.cpp $(HEADER)
+main.o: main.cpp $(HEADER)
 		$(CC) $(FLAGS) -c $< -o $@
 
-RPN.o : RPN.cpp $(HEADER)
+PmergeMe.o: PmergeMe.cpp $(HEADER)
 		$(CC) $(FLAGS) -c $< -o $@
 
 clean:
