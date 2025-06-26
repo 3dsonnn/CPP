@@ -6,34 +6,30 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 17:54:38 by efinda            #+#    #+#              #
-#    Updated: 2025/06/24 12:46:43 by efinda           ###   ########.fr        #
+#    Updated: 2025/06/26 12:16:38 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 HEADER = PmergeMe.hpp
 
-OBJ =	main.o		\
+OBJS =	main.o		\
 		PmergeMe.o	\
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-		$(CC) $(FLAGS) $(OBJ) -o $@
+$(OBJS): $(HEADER)
 
-main.o: main.cpp $(HEADER)
-		$(CC) $(FLAGS) -c $< -o $@
-
-PmergeMe.o: PmergeMe.cpp $(HEADER)
-		$(CC) $(FLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) $(OBJS)
 
 fclean: clean
 		$(RM) $(NAME)

@@ -6,37 +6,34 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/15 06:38:18 by efinda            #+#    #+#              #
-#    Updated: 2025/06/23 17:50:14 by efinda           ###   ########.fr        #
+#    Updated: 2025/06/26 16:51:19 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 
-SRC =	main.cpp			\
-		BitcoinExchange.cpp	\
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+RM = rm -rf
 
 HEADER = BitcoinExchange.hpp
 
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-RM = rm -rf
-
-OBJ = $(SRC:.cpp=.o)
+OBJS =	main.o				\
+		BitcoinExchange.o	\
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-		$(CC) $(FLAGS) $(OBJ) -o $@
+$(OBJS): $(HEADER)
 
-%.o: %.cpp $(HEADER)
-		$(CC) $(FLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) $(OBJS)
 
 fclean: clean
 		$(RM) $(NAME)
 
-re: fclean all
+re: fclean all 
 
 .PHONY: all clean fclean re

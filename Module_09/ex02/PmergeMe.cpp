@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 17:54:46 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/25 12:29:00 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/26 18:58:49 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,31 @@ PmergeMe::~PmergeMe() { }
 
 PmergeMe::PmergeMe(char **av): av(av)
 {
+    struct timeval  start, end;
+
     if (check_av())
         return ;
-    for (std::vector<int>::iterator it = vct.begin(); it != vct.end(); it++)
-        std::cout << *it << (it + 1 == vct.end() ? '\n' : ' ');
-    FordJohnson(vct);
-    for (std::vector<int>::iterator it = vct.begin(); it != vct.end(); it++)
-        std::cout << *it << (it + 1 == vct.end() ? '\n' : ' ');
-}
-
-std::vector<int>    PmergeMe::generateJacobsthal(int n)
-{
-    std::vector<int>    jacobsthal;
-    int                 next;
-    int                 i = 4;
-    int                 sum = 4;
-
-    if (n <= 0)
-        return (jacobsthal);
-    jacobsthal.push_back(1);    // J_2 = 1
-    if (n == 1)
-        return (jacobsthal);
-    jacobsthal.push_back(3);    // J_3 = 3
-    if (n <= 3)
-        return (jacobsthal);
-    while (sum < n)
+    std::cout << "Before: ";
+    for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end(); it++)
+        std::cout << *it << (it + 1 == tmp.end() ? '\n' : ' ');
     {
-        next = jacobsthal[i - 2] + 2 * jacobsthal[i - 3];
-        jacobsthal.push_back(next);
-        sum += next;
-        i++;
+        if (gettimeofday(&start, NULL)) { std::cerr << "Failed to get the time" << std::endl; return ; }
+        dqe.assign(tmp.begin(), tmp.end());
+        FordJohnson(dqe);
+        if (gettimeofday(&end, NULL)) { std::cerr << "Failed to get the time" << std::endl; return ; }
+        getTime(start, end, times[0]);
     }
-    return (jacobsthal);
+    {
+        if (gettimeofday(&start, NULL)) { std::cerr << "Failed to get the time" << std::endl; return ; }
+        vct.assign(tmp.begin(), tmp.end());
+        FordJohnson(vct);
+        if (gettimeofday(&end, NULL)) { std::cerr << "Failed to get the time" << std::endl; return ; }
+        getTime(start, end, times[1]);
+    }
+    std::cout << "After: ";
+    for (std::deque<int>::iterator it = dqe.begin(); it != dqe.end(); it++)
+        std::cout << *it << (it + 1 == dqe.end() ? '\n' : ' ');
+    showTimes();
 }
 
 void    PmergeMe::FordJohnson(std::vector<int> &vect)
@@ -78,7 +71,7 @@ void    PmergeMe::FordJohnson(std::vector<int> &vect)
     if (main.size() > 1)
         FordJohnson(main);
     int covered = 0;
-    jacobsthal = generateJacobsthal(pending.size());
+    jacobsthal = generateJacobsthal(pending.size(), Int2Type<1>());
     for (std::vector<int>::size_type j = 0; j < jacobsthal.size() && covered < static_cast<int>(pending.size()); j++)
     {
         int group_size = jacobsthal[j];
@@ -100,6 +93,116 @@ void    PmergeMe::FordJohnson(std::vector<int> &vect)
         main.insert(it, pending[indices[j]]);
     }
     vect = main;
+}
+
+void    PmergeMe::FordJohnson(std::deque<int> &dqe)
+{
+    std::deque<int>    main, pending, indices, jacobsthal;
+
+    for (std::size_t i = 0; i < dqe.size() - 1; i += 2)
+    {
+        if (dqe.at(i) > dqe.at(i + 1))
+        {
+            main.push_back(dqe.at(i));
+            pending.push_back(dqe.at(i + 1));
+        }
+        else
+        {
+            main.push_back(dqe.at(i + 1));
+            pending.push_back(dqe.at(i));
+        }
+    }
+    if (dqe.size() % 2)
+        pending.push_back(dqe.back());
+    if (main.size() > 1)
+        FordJohnson(main);
+    int covered = 0;
+    jacobsthal = generateJacobsthal(pending.size(), Int2Type<0>());
+    for (std::deque<int>::size_type j = 0; j < jacobsthal.size() && covered < static_cast<int>(pending.size()); j++)
+    {
+        int group_size = jacobsthal[j];
+        int end = covered + group_size;
+        if (end > static_cast<int>(pending.size()))
+            end = pending.size();
+        for (int k = end - 1; k >= covered && k < static_cast<int>(pending.size()); k--)
+            indices.push_back(k);
+        covered = end;
+    }
+    while (covered < static_cast<int>(pending.size()))
+    {
+        indices.push_back(covered);
+        covered++;
+    }
+    for (std::deque<int>::size_type j = 0; j < indices.size(); j++)
+    {
+        std::deque<int>::iterator  it = std::upper_bound(main.begin(), main.end(), pending[indices[j]]);
+        main.insert(it, pending[indices[j]]);
+    }
+    dqe = main;
+}
+
+std::deque<int> PmergeMe::generateJacobsthal(int n, Int2Type<0>)
+{
+    std::deque<int> jacobsthal;
+    int             next;
+    int             i = 4;
+    int             sum = 4;
+
+    if (n <= 0)
+        return (jacobsthal);
+    jacobsthal.push_back(1);
+    if (n == 1)
+        return (jacobsthal);
+    jacobsthal.push_back(3);
+    if (n <= 3)
+        return (jacobsthal);
+    while (sum < n)
+    {
+        next = jacobsthal[i - 2] + 2 * jacobsthal[i - 3];
+        jacobsthal.push_back(next);
+        sum += next;
+        i++;
+    }
+    return (jacobsthal);
+}
+
+std::vector<int>    PmergeMe::generateJacobsthal(int n, Int2Type<1>)
+{
+    std::vector<int>    jacobsthal;
+    int                 next;
+    int                 i = 4;
+    int                 sum = 4;
+
+    if (n <= 0)
+        return (jacobsthal);
+    jacobsthal.push_back(1);
+    if (n == 1)
+        return (jacobsthal);
+    jacobsthal.push_back(3);
+    if (n <= 3)
+        return (jacobsthal);
+    while (sum < n)
+    {
+        next = jacobsthal[i - 2] + 2 * jacobsthal[i - 3];
+        jacobsthal.push_back(next);
+        sum += next;
+        i++;
+    }
+    return (jacobsthal);
+}
+
+void    PmergeMe::showTimes( void ) const
+{
+    std::cout << "Time to process a range of " << dqe.size() << " elements with std::deque<int> : " << times[0] << " microseconds." << std::endl;
+    std::cout << "Time to process a range of " << vct.size() << " elements with std::vector<int> : " << times[1] << " microseconds." << std::endl;
+}
+
+void    PmergeMe::getTime(struct timeval start, struct timeval end, std::size_t &time)
+{
+    if (start.tv_sec == end.tv_sec)
+        time = end.tv_usec - start.tv_usec;
+    else
+        time = ((end.tv_sec - start.tv_sec) * 1000000) + (end.tv_usec - start.tv_usec);
 }
 
 bool    PmergeMe::check_av( void )
@@ -156,24 +259,23 @@ bool    PmergeMe::check_av( void )
                     return (std::cerr << "Error: failed to convert string to integer {" << i << "}" << std::endl, true);
                 if (!value)
                     return (std::cerr << "Error: not positive integer {" << i << "}" << std::endl, true);
-                if (vct.size())
+                if (tmp.size())
                 {
-                    if (std::find(vct.begin(), vct.end(), value) != vct.end())
+                    if (std::find(tmp.begin(), tmp.end(), value) != tmp.end())
                         return (std::cerr << "Error: the sequence can't contain duplicate elements {" << i << "}" << std::endl, true);
-                    if (sorted && vct.back() > value)
+                    if (sorted && tmp.back() > value)
                         sorted = false;
                 }
-                vct.push_back(value);
+                tmp.push_back(value);
             }
             else
                 return (std::cerr << "Error: bad argument {" << i << "}" << std::endl, true);
             space = str.find_first_not_of(' ', dgt[1] + 1);
         }
     }
-    if (vct.size() == 1)
-        return (std::cerr << "A sequence of elements is required." << std::endl, true);
+    if (tmp.size() == 1)
+        return (std::cerr << "Error: a sequence of elements is required." << std::endl, true);
     if (sorted)
-        return (std::cerr << "The sequence is already sorted." << std::endl, true);
-    lst.assign(vct.begin(), vct.end());
+        return (std::cerr << "Error: the sequence is already sorted." << std::endl, true);
     return (false);
 }

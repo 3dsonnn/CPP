@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 08:44:14 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/23 07:53:18 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/26 16:38:35 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,25 +180,25 @@ bool    BitcoinExchange::isValidDate(const std::string date) const
     int         year;
 
     if (date.size() != 10 || date.at(4) != '-' || date.at(7) != '-')
-        return (false);
+        return (true);
     for (std::size_t i = 0; i < date.size(); i++)
-        if ((i != 4 || i != 7) || !std::isdigit(date.at(i)))
-            return (false);
+        if ((i != 4 && i != 7) && !std::isdigit(date.at(i)))
+            return (true);
     aux = date.substr(8, 2);
     day = atoi(aux.c_str());
     if (day < 0 || day > 31)
-        return (false);
+        return (true);
     aux = date.substr(5, 2);
     month = atoi(aux.c_str());
     if (month < 0 || month > 12 || (month == 2 && day > 29)
         || ((month == 4 || month == 6 || month == 9 || month == 11) && day == 31))
-        return (false);
+        return (true);
     aux = date.substr(0, 4);
     year = atoi(aux.c_str());
     if (year < 1 || year > 2025 || (year == 2025
-        && ((month > 6) || (month == 6 && day > 25))))
-        return (false);
-    return (true);
+        && ((month > 6) || (month == 6 && day > 26))))
+        return (true);
+    return (false);
 }
 
 int     BitcoinExchange::countChar(const std::string str, char c) const
@@ -206,9 +206,7 @@ int     BitcoinExchange::countChar(const std::string str, char c) const
     int res = 0;
 
     for (std::size_t i = 0; i < str.size(); i++)
-    {
         if (str.at(i) == c)
             res++;
-    }
     return (res);
 }

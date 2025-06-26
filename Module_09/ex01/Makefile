@@ -6,34 +6,30 @@
 #    By: efinda <efinda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:06:40 by efinda            #+#    #+#              #
-#    Updated: 2025/06/24 12:46:41 by efinda           ###   ########.fr        #
+#    Updated: 2025/06/26 16:53:15 by efinda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RPN
 
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADER =	RPN.hpp	\
+HEADER = RPN.hpp	\
 
-OBJ =	main.o	\
+OBJS =	main.o	\
 		RPN.o	\
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-		$(CC) $(FLAGS) $(OBJ) -o $@
+$(OBJS): $(HEADER)
 
-main.o : main.cpp $(HEADER)
-		$(CC) $(FLAGS) -c $< -o $@
-
-RPN.o : RPN.cpp $(HEADER)
-		$(CC) $(FLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) $(OBJS)
 
 fclean: clean
 		$(RM) $(NAME)
