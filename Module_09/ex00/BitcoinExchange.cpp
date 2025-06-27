@@ -186,17 +186,17 @@ bool    BitcoinExchange::isValidDate(const std::string date) const
             return (true);
     aux = date.substr(8, 2);
     day = atoi(aux.c_str());
-    if (day < 0 || day > 31)
+    if (day < 1 || day > 31)
         return (true);
     aux = date.substr(5, 2);
     month = atoi(aux.c_str());
-    if (month < 0 || month > 12 || (month == 2 && day > 29)
+    if (month < 1 || month > 12 || (month == 2 && day > 29)
         || ((month == 4 || month == 6 || month == 9 || month == 11) && day == 31))
         return (true);
     aux = date.substr(0, 4);
     year = atoi(aux.c_str());
     if (year < 1 || year > 2025 || (year == 2025
-        && ((month > 6) || (month == 6 && day > 26))))
+        && ((month > 6) || (month == 6 && day > 30))))
         return (true);
     return (false);
 }
