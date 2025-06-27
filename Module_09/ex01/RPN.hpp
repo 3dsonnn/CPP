@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 12:06:46 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/23 17:47:03 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/27 17:20:22 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stack>
 #include <iostream>
+#include <sstream>
 
 #define CHARS "0123456789+-/*"
 
@@ -27,8 +28,8 @@ class RPN
         std::stack<int> stack;
         std::string     arg;
         void            _RPN( void );
-        bool            check_arg( void );
         int             do_op(int first, int second, char op);
+        bool            isNBR(std::string str);
     public:
         RPN(const char *input);
         ~RPN();

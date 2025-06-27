@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 12:06:50 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/26 13:50:10 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/27 17:20:08 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,7 @@ RPN &RPN::operator=(const RPN &other) { (void)other; return (*this); }
 
 RPN::~RPN() { }
 
-RPN::RPN(const char *arg)
-{
-    this->arg.assign(arg);
-    if (check_arg())
-        return ;
-    _RPN();
-}
-
-void    RPN::_RPN( void )
-{
-    int i1;
-    int i2;
-    std::size_t index;
-
-    index = arg.find_first_of(CHARS);
-    while (index != std::string::npos)
-    {
-        if (arg.at(index) >= '0' && arg.at(index) <= '9')
-            stack.push(arg.at(index) - '0');
-        else
-        {
-            if (stack.size() < 2)
-                { std::cout << "Error: bad argument." << std::endl; return ; }
-            i1 = stack.top();
-            stack.pop();
-            i2 = stack.top();
-            stack.pop();
-            stack.push(do_op(i2, i1, arg.at(index)));
-        }
-        index = arg.find_first_of(CHARS, index + 1);
-    }
-    if (stack.size() == 1)
-        std::cout << stack.top() << std::endl;
-    else
-        std::cout << "Error: bad argument." << std::endl;
-}
+RPN::RPN(const char *arg): arg(arg) { _RPN(); }
 
 int RPN::do_op(int first, int second, char op)
 {
@@ -66,44 +31,94 @@ int RPN::do_op(int first, int second, char op)
     if (op == '*')
         return (first * second);
     if (op == '/')
-    {
-        if (!second)
-            return (second);
         return (first / second);
-    }
     return (0);
 }
 
-bool    RPN::check_arg( void )
+bool    RPN::isNBR(std::string str)
+{
+    bool        sig = false;
+
+    if (str.empty())
+        return (false);
+    if (str.at(0) == '+' || str.at(0) == '-')
+    {
+        if (str.size() == 1)
+            return (false);
+        if (str.at(0) == '-')
+            sig = true;
+        str.erase(0, 1);
+    }
+    for (std::size_t i = 0; i < str.size(); i++)
+        if (!std::isdigit(str.at(i)))
+            return (false);
+    if (str.at(0) == '0')
+    {
+        std::size_t zero = str.find_first_not_of('0', 0);
+        if (zero == std::string::npos)
+            return (true);
+        str.erase(0, zero);
+    }
+    return (true);
+}
+
+void    RPN::_RPN( void )
 {
     std::string chars(" 0123456789+-/*");
-    bool        toggle = false;
+    std::string nbr;
+    int         i1, i2;
+    std::size_t start = 0, end;
 
     if (arg.empty())
-        return (std::cout << "Error: empty argument." << std::endl, true);
-    if (arg.size() < 5)
-        return (std::cout << "Error: argument too short." << std::endl, true);
+        { std::cout << "Error: empty argument." << std::endl; return ; }
     for (std::size_t i = 0; i < arg.size(); i++)
         if (chars.find_first_of(arg.at(i)) == std::string::npos)
-            return (std::cout << "Error: invalid char at position " << i << "." << std::endl, true);
+            { std::cout << "Error: invalid char at position " << i << "." << std::endl; return ; }
     while (arg.size() && arg.at(0) == ' ')
         arg.erase(0, 1);
     if (arg.empty())
-        return (std::cout << "Error: argument full of spaces." << std::endl, true);
+        { std::cout << "Error: argument full of spaces." << std::endl; return ; }
     while (arg.at(arg.size() - 1) == ' ')
         arg.erase(arg.size() - 1, 1);
-    if (arg.size() < 5 || !(arg.at(0) >= '0' && arg.at(0) <= '9'))
-        return (std::cout << "Error: bad argument." << std::endl, true);
-    for (std::size_t i = 0; i < arg.size(); i++)
+    end = arg.find_first_of(' ');
+    if (end == std::string::npos)
     {
-        if (arg.at(i) == ' ')
-            toggle = false;
+        if (isNBR(arg))
+            { std::cout << arg << std::endl; return ; }
+        { std::cout << "Error: bad argument." << std::endl; return ; }
+    }
+    while (-42)
+    {
+        nbr = arg.substr(start, end - start);
+        if (!isNBR(nbr) && nbr.size() != 1
+            && nbr.compare("+") && nbr.compare("-") && nbr.compare("*") && nbr.compare("/"))
+            { std::cout << "Error: bad argument." << std::endl; return ; }
+        if (!nbr.compare("+") || !nbr.compare("-") || !nbr.compare("*") || !nbr.compare("/"))
+        {
+            if (stack.size() < 2)
+                { std::cout << "Error: bad argument." << std::endl; return ; }
+            i1 = stack.top();
+            stack.pop();
+            i2 = stack.top();
+            stack.pop();
+            stack.push(do_op(i2, i1, nbr.at(0)));
+        }
         else
         {
-            if (toggle)
-                return (std::cout << "Error: bad argument." << std::endl, true);
-            toggle = true;
+            std::istringstream  iss(nbr);
+            if (!(iss >> i1))
+                { std::cerr << "Error: failed to convert string to integer." << std::endl; return ; }
+            stack.push(i1);
         }
+        start = arg.find_first_not_of(' ', end);
+        if (start == std::string::npos)
+            break ;
+        end = arg.find_first_of(' ', start);
+        if (end == std::string::npos)
+            end = arg.size();
     }
-    return (false);
+    if (stack.size() == 1)
+        std::cout << stack.top() << std::endl;
+    else
+        std::cout << "Error: bad argument." << std::endl;
 }

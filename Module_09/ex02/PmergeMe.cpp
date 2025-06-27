@@ -6,7 +6,7 @@
 /*   By: efinda <efinda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 17:54:46 by efinda            #+#    #+#             */
-/*   Updated: 2025/06/26 18:58:49 by efinda           ###   ########.fr       */
+/*   Updated: 2025/06/27 15:57:14 by efinda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ PmergeMe::PmergeMe(char **av): av(av)
 
 void    PmergeMe::FordJohnson(std::vector<int> &vect)
 {
-    std::vector<int>    main, pending, indices, jacobsthal;
+    std::vector<int>    main, pending;
 
     for (std::size_t i = 0; i < vect.size() - 1; i += 2)
     {
@@ -70,23 +70,20 @@ void    PmergeMe::FordJohnson(std::vector<int> &vect)
         pending.push_back(vect.back());
     if (main.size() > 1)
         FordJohnson(main);
-    int covered = 0;
+    std::size_t         end, last_index = 0;
+    std::vector<int>    indices, jacobsthal;
     jacobsthal = generateJacobsthal(pending.size(), Int2Type<1>());
-    for (std::vector<int>::size_type j = 0; j < jacobsthal.size() && covered < static_cast<int>(pending.size()); j++)
+    for (std::size_t round = 0; round < jacobsthal.size() && last_index < pending.size(); round++)
     {
-        int group_size = jacobsthal[j];
-        int end = covered + group_size;
-        if (end > static_cast<int>(pending.size()))
+        end = last_index + jacobsthal[round];
+        if (end > pending.size())
             end = pending.size();
-        for (int k = end - 1; k >= covered && k < static_cast<int>(pending.size()); k--)
-            indices.push_back(k);
-        covered = end;
+        for (std::size_t index = end - 1; index >= last_index && index < pending.size(); index--)
+            indices.push_back(index);
+        last_index = end;
     }
-    while (covered < static_cast<int>(pending.size()))
-    {
-        indices.push_back(covered);
-        covered++;
-    }
+    for (std::size_t aux = last_index; aux < pending.size(); aux++)
+        indices.push_back(aux);
     for (std::vector<int>::size_type j = 0; j < indices.size(); j++)
     {
         std::vector<int>::iterator  it = std::upper_bound(main.begin(), main.end(), pending[indices[j]]);
@@ -97,7 +94,7 @@ void    PmergeMe::FordJohnson(std::vector<int> &vect)
 
 void    PmergeMe::FordJohnson(std::deque<int> &dqe)
 {
-    std::deque<int>    main, pending, indices, jacobsthal;
+    std::deque<int>    main, pending;
 
     for (std::size_t i = 0; i < dqe.size() - 1; i += 2)
     {
@@ -116,23 +113,20 @@ void    PmergeMe::FordJohnson(std::deque<int> &dqe)
         pending.push_back(dqe.back());
     if (main.size() > 1)
         FordJohnson(main);
-    int covered = 0;
+    std::size_t         end, last_index = 0;
+    std::deque<int>     indices, jacobsthal;
     jacobsthal = generateJacobsthal(pending.size(), Int2Type<0>());
-    for (std::deque<int>::size_type j = 0; j < jacobsthal.size() && covered < static_cast<int>(pending.size()); j++)
+    for (std::size_t round = 0; round < jacobsthal.size() && last_index < pending.size(); round++)
     {
-        int group_size = jacobsthal[j];
-        int end = covered + group_size;
-        if (end > static_cast<int>(pending.size()))
+        end = last_index + jacobsthal[round];
+        if (end > pending.size())
             end = pending.size();
-        for (int k = end - 1; k >= covered && k < static_cast<int>(pending.size()); k--)
-            indices.push_back(k);
-        covered = end;
+        for (std::size_t index = end - 1; index >= last_index && index < pending.size(); index--)
+            indices.push_back(index);
+        last_index = end;
     }
-    while (covered < static_cast<int>(pending.size()))
-    {
-        indices.push_back(covered);
-        covered++;
-    }
+    for (std::size_t aux = last_index; aux < pending.size(); aux++)
+        indices.push_back(aux);
     for (std::deque<int>::size_type j = 0; j < indices.size(); j++)
     {
         std::deque<int>::iterator  it = std::upper_bound(main.begin(), main.end(), pending[indices[j]]);
@@ -144,24 +138,23 @@ void    PmergeMe::FordJohnson(std::deque<int> &dqe)
 std::deque<int> PmergeMe::generateJacobsthal(int n, Int2Type<0>)
 {
     std::deque<int> jacobsthal;
-    int             next;
-    int             i = 4;
-    int             sum = 4;
+    int                 next;
 
     if (n <= 0)
         return (jacobsthal);
     jacobsthal.push_back(1);
-    if (n == 1)
+    if (n < 3)
         return (jacobsthal);
     jacobsthal.push_back(3);
-    if (n <= 3)
+    if (n < 5)
         return (jacobsthal);
-    while (sum < n)
+    while (-42)
     {
-        next = jacobsthal[i - 2] + 2 * jacobsthal[i - 3];
-        jacobsthal.push_back(next);
-        sum += next;
-        i++;
+        next = jacobsthal.at(jacobsthal.size() - 1) + 2 * jacobsthal.at(jacobsthal.size() - 2);
+        if (next <= n)
+            jacobsthal.push_back(next);
+        else
+            break ;
     }
     return (jacobsthal);
 }
@@ -170,23 +163,22 @@ std::vector<int>    PmergeMe::generateJacobsthal(int n, Int2Type<1>)
 {
     std::vector<int>    jacobsthal;
     int                 next;
-    int                 i = 4;
-    int                 sum = 4;
 
     if (n <= 0)
         return (jacobsthal);
     jacobsthal.push_back(1);
-    if (n == 1)
+    if (n < 3)
         return (jacobsthal);
     jacobsthal.push_back(3);
-    if (n <= 3)
+    if (n < 5)
         return (jacobsthal);
-    while (sum < n)
+    while (-42)
     {
-        next = jacobsthal[i - 2] + 2 * jacobsthal[i - 3];
-        jacobsthal.push_back(next);
-        sum += next;
-        i++;
+        next = jacobsthal.at(jacobsthal.size() - 1) + 2 * jacobsthal.at(jacobsthal.size() - 2);
+        if (next <= n)
+            jacobsthal.push_back(next);
+        else
+            break ;
     }
     return (jacobsthal);
 }
